@@ -33,27 +33,31 @@ exports.register = (data) =>
 
   exports.login = (data) => 
   new Promise((resolve, reject) => {
-    usermodel.findOne({
-      npm: data.npm
-    }).then((user) => {
-      if (user) {
-          if (bcrypt.compareSync(data.password, user.password)) {
-            resolve({
-              sukses: true,
-              pesan: 'Berhasil Login',
-              data: user
-            })
-          } else {
-            reject({
-              sukses: false,
-              pesan: 'Password Salah'
-            })     
-          }
-      } else {
-        reject({
-          sukses: false,
-          pesan: 'NPM Tidak Terdaftar'
-        })
-      }
-    })
+try {
+  usermodel.findOne({
+    npm: data.npm
+  }).then((user) => {
+    if (user) {
+        if (bcrypt.compareSync(data.password, user.password)) {
+          resolve({
+            sukses: true,
+            pesan: 'Berhasil Login',
+            data: user
+          })
+        } else {
+          reject({
+            sukses: false,
+            pesan: 'Password Salah'
+          })     
+        }
+    } else {
+      reject({
+        sukses: false,
+        pesan: 'NPM Tidak Terdaftar'
+      })
+    }
+  })
+} catch (error) {
+  console.log(error)
+}
   })

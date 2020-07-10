@@ -8,14 +8,15 @@ const UserSchema = new Schema({
   npm: {
     type: String
   },
-  prodi: {
-    type: String
-  },
-  semester: {
+  email: {
     type: String
   },
   password: {
     type: String
+  },
+  level: {
+    type: Number,
+    default: 2
   }
 })
 

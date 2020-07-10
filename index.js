@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({
 }))
 // list route
 app.use('/user', require('./routes/user'))
-app.use('/admin', require('./routes/admin'))
 app.use('/jadwal', require('./routes/jadwal'))
 app.use('/kegiatan', require('./routes/kegiatan'))
 
